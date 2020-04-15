@@ -1,0 +1,71 @@
+Docker Install CentOS 
+Docker is a set of platform as a service (PAAS) products that uses OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels
+
+
+Written in: Go Language
+
+
+The Docker Engine package is now called docker-ce.
+
+---->First Uninstall Old versions
+
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+
+
+
+---->Iinstall Docker
+-->first require yum-utils package to install 
+sudo yum install -y yum-utils
+
+-->Docker Repo Download
+
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+
+
+-->Docker Engine Install 
+sudo yum install docker-ce docker-ce-cli containerd.io
+
+also docker specific Version install commnad
+sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+
+
+
+--->Start Docker
+sudo systemctl start docker
+
+--->Docker Engine is installed correctly by running the hello-world image.
+
+sudo docker run hello-world
+
+
+
+
+
+
+
+------->Docker insall Another Method <-------
+https://download.docker.com/linux/centos/
+then Choose OS and select docker version x86_64/stable/Packages/
+and Download rpm package
+
+
+--> Install docker commnad:
+
+sudo yum install /path/to/package.rpm
+
+-->Start Docker
+sudo systemctl start docker
+
+
+
+
+
+

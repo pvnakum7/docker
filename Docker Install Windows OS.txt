@@ -1,0 +1,37 @@
+Docker Install Windows OS 
+
+Docker is a set of platform as a service (PAAS) products that uses OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels
+
+
+Written in: Go Language
+
+The Docker Engine package is now called docker-ce.
+
+
+Docker Requiremnet
+-->64 bit and hardware-assisted virtualization technology(SLAT)
+-->4 GB Ram
+-->BIOS-level hardware virtualization support must be enabled in the BIOS settings.
+
+Download Docker .exe file and install
+and open Docker Desktop application
+
+Create Docker account if require and login
+
+--->Docker hello world demo
+
+docker run hello-world
+
+
+
+---->Uninstall Docker Desktop<------
+
+
+To uninstall Docker Desktop from your Windows machine:
+
+    From the Windows Start menu, select Settings > Apps > Apps & features.
+    Select Docker Desktop from the Apps & features list and then select Uninstall.
+    Click Uninstall to confirm your selection.
+
+
+

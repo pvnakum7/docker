@@ -1,0 +1,45 @@
+Docker Swarm Backup and Restore
+
+**************************
+Create the Backup
+**************************
+On the manager:
+
+
+---->step 1 stop docker service: 
+
+sudo systemctl stop docker
+
+---->step 2 take backup and file location
+
+sudo tar -zvcf backup.tar.gz -C /var/lib/docker/swarm .
+
+---->restart docker
+sudo systemctl start docker
+
+*********************
+---->Restore from Backup
+**************************
+On the manager:
+
+---->step 1 stop docker service: 
+sudo systemctl stop docker
+
+---->step 2: Delete file under /var/lib/docker/swarm
+sudo rm -rf /var/lib/docker/swarm/*
+
+
+---->Selection file for  restore backup  
+sudo tar -zxvf backup.tar.gz -C /var/lib/docker/swarm/
+
+---->restart docker
+sudo systemctl start docker
+
+----->check node list
+docker node ls
+
+
+
+
+
+

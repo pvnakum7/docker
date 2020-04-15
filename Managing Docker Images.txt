@@ -1,0 +1,45 @@
+Managing Docker Images 
+
+
+--->List images on the system:
+
+docker image ls
+docker image ls -a
+
+
+
+---->Inspect (specification) of image metadata nginx:1.14.0 image:
+
+docker image inspect nginx:1.14.0
+
+-->get image 
+docker image inspect nginx:1.14.0 --format "{{.Architecture}}"
+here-->output: amd64
+
+docker image inspect nginx:1.14.0 --format "{{.Architecture}} {{.Os}}"
+here output-->amd64 linux
+
+
+
+
+*******************Delete Image used by container *******************
+-->only Delete an image:
+docker image rm nginx:1.14.0
+
+--->Force Delete if using or runing by container
+docker run -d --name nginx nginx:1.14.0
+docker image rm -f nginx:1.14.0
+
+
+*******************  ******************
+Locate a dangling image and clean it up
+*******************  ******************
+
+docker image ls -a
+docker container ls
+docker container rm -f nginx
+docker image ls -a
+docker image prune
+
+
+

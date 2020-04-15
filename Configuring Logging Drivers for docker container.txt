@@ -1,0 +1,33 @@
+Configuring Logging Drivers
+
+--->For get loging data of container using
+(Splunk, Journald, etc.)
+
+Check login driver for docker
+--->docker info | grep Logging
+
+--->edit and add bellow line for login details
+sudo vi /etc/docker/daemon.json
+
+add this line 
+
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "15m"
+  }
+}
+
+
+---> restart docker
+
+sudo systemctl restart docker
+
+
+
+---->Run a docker container, overriding the system default logging driver settings:
+(contaionername-=nginx or any nameof conitainer)
+
+docker run --log-driver json-file --log-opt max-size=50m contaionername
+
+

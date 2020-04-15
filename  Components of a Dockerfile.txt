@@ -1,0 +1,67 @@
+
+Components of a Dockerfile
+
+docker file mainly consist  4 
+step command: FROM, ENV,RUN ,CMD
+
+From--> FROM is used to define the base image to start the build 
+		process. Every Dockerfile must start with the FROM instruction
+		like : FROM ubuntu
+ENV --> Command used to set the environment variables that is required 
+		to run the project.	like : ENV HTTP_PORT="9000"
+
+WORKDIR--> WORKDIR tells Docker that the rest of the commands will be 
+			run in the context of the "/app" folder inside the image
+			like: WORKDIR /path/to/workdir
+			WORKDIR /app
+
+RUN--> RUN has 2 forms:
+		1-RUN <command> (shell form, the command is run in a shell, which by default is /bin/sh -c on Linux or cmd /S /C on Windows)
+    	2-RUN ["executable", "param1", "param2"] (exec form)
+    	like : 
+    	     RUN /bin/bash -c 'source $HOME/.bashrc; echo $HOME'
+
+ENTRYPOINT-->ENTRYPOINT has 2 forms:
+				You can override ENTRYPOINT instructions using the 
+				"docker run --entrypoint"
+    		1-: ENTRYPOINT ["executable", "param1", "param2"] (exec form, preferred)
+    		2-: ENTRYPOINT command param1 param2 (shell form) 
+    		like :
+    		ENTRYPOINT [ "sh", "-c", "echo $HOME" ]
+
+ CMD --> The CMD instruction has three forms:
+ 		    1-:CMD ["executable","param1","param2"] (exec form, this is the preferred form)
+ 		    2-:CMD ["param1","param2"] (as default parameters to ENTRYPOINT)
+    		3-:CMD command param1 param2 (shell form)  	
+
+    		like :
+    		CMD ["bin/ping", "localhost"]	 
+
+
+
+Add some directives to the Dockerfile:
+bellow file is docker file
+#####################
+# Simple nginx image
+FROM ubuntu:bionic
+
+ENV NGINX_VERSION 1.14.0-0ubuntu1.7
+
+RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y nginx=$NGINX_VERSION
+
+CMD ["nginx", "-g", "daemon off;"]
+
+##########################
+
+
+--->Build and test the image:(-t for tagename)
+
+docker build -t custom-nginx-tag-name
+
+
+docker run --name custom-nginx -d -p 8080:80 custom-nginx-tag-name
+
+curl localhost:8080
+
+

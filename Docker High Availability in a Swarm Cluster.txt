@@ -1,0 +1,21 @@
+Docker High Availability in a Swarm Cluster
+
+
+Docker recommends that you  distribute your manager nodes across at least 3 availability zones.
+
+
+
+
+
+
+for example:
+
+
+node manager.                 Availibility zone 
+								Distribution
+	3								1 - 1 - 1
+	5								2 - 2 - 1
+	7								3 - 2 - 2
+	9								3 - 3 - 3
+
+

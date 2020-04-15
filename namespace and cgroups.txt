@@ -1,0 +1,51 @@
+
+Namespaces and Cgroups
+
+**********************NameSpaces***********************
+
+Namespaces are one of a feature in the Linux Kernel and fundamental aspect of containers on Linux. 
+
+On the other hand,
+ namespaces provide a layer of isolation.
+
+--------->use or Namespace <---------
+
+--->Docker uses namespaces of various kinds to 
+*****provide the isolation *****
+that containers need in order to 
+"remain portable and refrain(अलग होना)" 
+from affecting the remainder of the host system
+
+
+ Namespace Types:
+    pid -> Process ID - process isolation
+    mnt -> Mount - File system mounts
+    ipc -> Inter process communication
+    net -> Network Interface
+    uts -> Kernal and version Identifier
+    user namespaces -> User rewuire special configuration
+
+    
+********************** Cgroups ***********************
+
+--->Cgroups provide resource limitation and reporting capability within the container space.
+
+
+--->control groups
+
+   - CPU
+   - Memory
+   - Network Bandwidth
+   - Disk
+   - Priority
+
+ -------> Check working Cgroups  <-------
+command to check cgroup working on the underline host server:
+
+command: systemd-cgls
+
+command: systemd-cgtop
+
+
+
+

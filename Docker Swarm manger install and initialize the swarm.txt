@@ -1,0 +1,68 @@
+Docker Swarm
+
+
+A Docker Swarm is a group of either physical or virtual machines that are running the Docker application and that have been configured to join together in a cluster. 
+
+--->It allows for easily building a distributed cluster 
+
+--->A distributed systems cluster is a group of machines that are virtually or geographically separated and that work together to provide the same service or application to clients.
+
+
+
+---->Various Swarm Node 
+
+	-Manager Node
+		image	: ubuntu bionic 18.04
+		size	: medium size 
+
+	-Worker Node
+
+		image	: ubuntu bionic 18.04
+		size	: small size 
+
+--->Install Docker Engine on the Swarm Manager:
+
+sudo apt-get update
+
+sudo apt-get -y install \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg-agent \
+  software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+sudo apt-get install -y docker-ce=5:18.09.5~3-0~ubuntu-bionic docker-ce-cli=5:18.09.5~3-0~ubuntu-bionic containerd.io
+
+sudo usermod -a -G docker cloud_user
+*********************************************
+--->Now initialize the swarm!
+*********************************************
+######!!!!!!!!!!!!! Note: Be sure to use the private IP 
+(NOT the public IP) 
+for the --advertise-addr: !!!!!!!!!!!!!!!!
+###########
+
+
+docker swarm init --advertise-addr <swarm manager private IP>
+
+--->This shows some basic information about the current status of the swarm:
+
+docker info
+
+------>List the current nodes in the swarm and their status:
+
+docker node ls
+
+
+

@@ -1,0 +1,35 @@
+
+Docker Images Introduction 
+
+
+--->Download an image:
+(nginx =image name like helloword image or nginx)
+
+docker image pull nginx
+
+docker image pull helloword
+
+
+--->View file system layers in an image:
+
+docker image history nginx
+
+***************---->Container Image Remove ****************
+
+docker ps
+
+docker container rm -f <container id>
+
+
+*******************Image and container*************
+
+Here 
+-->"Conitaner consist (1,2,3,and 4)"
+
+-->"Image consist ( 2,3 and 4 only)""
+
+
+1  writable container layer
+2. web application
+3. python
+4. Ubuntu base Os image

@@ -1,0 +1,30 @@
+why docker container?
+
+
+Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and deploy it as one package.
+
+
+Benefit
+
+
+--->Require less space (compare to Virtual Machine)
+---> Boot Time Very Fast
+--->Conitaner Have a better Perfomance as they are hosted in a single Docker engine
+---> High Efficiency
+---> Easily portable acreoss different platforms
+---> Data Volume can be shared and reused among multiple containers
+--->Multi-Cloud Platforms (greatest benefits is portability)
+--->Isolation
+--->Security
+
+
+-->Return on Investment and Cost Savings 
+	-The first advantage of using docker is ROI(the return on investment)
+
+--->Standardization and Productivity
+	-
+
+--->CI Efficiency high (Container Image)
+
+
+--->Compatibility and Maintainability
