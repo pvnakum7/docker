@@ -1,0 +1,47 @@
+Docker Inspect
+
+---->Docker inspect is the simplest way to find additional information about existing objects, such as containers, images, and services
+
+Docker inspect is a great tool for managing and troubleshooting your Docker objects
+like host , docker swarm
+
+
+Commnad:
+docker inspect Object_id
+
+
+
+------>Run a container and inspect it.
+
+ docker run -d --name nginx nginx
+ docker inspect <CONTAINER_ID>
+
+------>List the containers and images to get their IDs, then inspect an image.
+
+ docker container ls
+ docker image ls
+ docker inspect <IMAGE_ID>
+
+------>Create and inspect a service.
+
+ docker service create --name nginx-svc nginx
+ docker service ls
+ docker inspect <SERVICE_ID>
+ docker inspect nginx-svc
+
+------>Use the type-specific commands to inspect objects.
+
+ docker container inspect nginx
+ docker service inspect nginx-svc
+
+------>Use the --format flag to retrieve a subset of the data in a specific format.
+
+ docker service inspect --format='{{.ID}}' nginx-svc
+
+
+
+
+
+
+
+ 

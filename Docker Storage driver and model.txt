@@ -1,0 +1,95 @@
+Docker Storage driver and model
+
+
+---->Docker Storage  also called as Graphics Driver
+
+
+---->Drivers depend on OS 
+
+Overlay2: current Defalt ubuntu and centos/RHEL default driver
+
+aufs: Ubuntu 14.04 and Older
+
+devicemapper :Centos 7 and earlier
+
+
+*******************
+Storage model
+*******************
+------>FileSystem  Storage
+-data is stored in the form of a file system
+-Used by overlay2 and aufs
+-Efficient use of memory
+-Inefficient with write-heavy workloads
+
+
+
+*******************
+Block Storage 
+*******************
+
+-Stores data in block
+-Used in Devicemapper
+-efficient with heavy workloads
+
+
+*******************
+Object Storage 
+*******************
+-Store data in external obeject-based store
+-Application must be designed to use object based storage
+-Flexible and scalable
+
+
+
+
+
+Linux distribution 		Recommended 				Alternative 
+						storage drivers				Drivers and File System
+*******************		********************	***************************
+ubuntu-Docker Engine  	overlay2 or aufs 		Overlay¹, devicemapper,
+Community on ubuntu 	(for Ubuntu 14.04      	file system:zfs,vfs
+						running on kernel 
+						3.13)
+
+
+
+Debian- Docker Engine  	overlay2(Debian Stretch)	overlay¹
+Community 			 	aufs or devicemapper   		file system:vfs
+						(older versions) 
+						
+
+
+CentOS-Docker Engine  		overlay2  			overlay¹, devicemapper,
+Community 			 				      		file system:zfs,vfs
+							
+							
+
+CentOS-Docker Engine  		overlay2  			overlay¹, devicemapper,
+Community 			 				      		file system:zfs,vfs
+
+
+****************************			**************************************
+Storage driver 							Supported backing filesystems
+****************************			**********************************
+overlay2, overlay 			-->			xfs with ftype=1, ext4
+aufs 						--->		xfs, ext4
+
+devicemapper 				-->			direct-lvm
+
+btrfs 						---->		btrfs
+
+zfs 						-->			zfs
+
+vfs 					------>			any filesystem
+
+
+
+
+
+
+
+
+
+
+

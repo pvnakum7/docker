@@ -1,0 +1,102 @@
+Docker Services
+
+----> A service is used to run an application on a Docker Swarm.
+
+----> A services specifies a set of one or more replica Tasks.
+
+---->These task will be distributed  automatically across 
+the nodes in the cluster and exucuted  as containers.
+
+docker service create [options] Image ARGS
+
+********
+--relicas :-> Specify the number of tasks to create for the service
+
+--name :-> Specify a name of th e service
+
+-p Published_Port:Service_Port    :->Publish a port 
+									so the service can be accessed externally.
+									The port is published on every node in the swarm
+
+
+
+**********************    ********************************
+Command						Description
+**********************    ********************************
+
+docker service create 	|	Create a new service
+docker service inspect 	|	Display detailed information on one or more services
+
+docker service logs 	|	Fetch the logs of a service or task
+
+docker service ls 		|	List services
+docker service ps 		|	List the tasks of one or more services
+
+docker service rm 		|	Remove one or more services
+docker service rollback |	Revert changes to a service’s configuration
+
+docker service scale 	|	Scale one or multiple replicated services
+docker service update 	|	Update a service
+
+
+
+---->Example Create a simple service running the nginx image.
+
+ docker service create nginx
+
+
+-------> Create an nginx service with a specified name, multiple replicas, 
+		and a published port.
+
+ docker service create --name nginx --replicas 3 -p 8080:80 nginx
+
+
+------->Use a template to pass the node hostname to each container 
+		as an environment variable.
+
+ docker service create --name node-hostname --replicas 3 --env NODE_HOSTNAME="{{.Node.Hostname}}" nginx
+
+
+
+------>Get the container running on the current machine, and print its environment variables to verify that the NODE_HOSTNAME variable is set properly.
+
+ docker ps
+ docker exec <CONTAINER_ID> printenv
+
+------>List the services in the cluster.
+
+ docker service ls
+
+------>List the tasks for a service.
+
+ docker service ps nginx
+
+------>Inspect a service.
+
+ docker service inspect nginx
+ docker service inspect --pretty nginx
+
+------>Change a service.
+
+ docker service update --replicas 2 nginx
+
+------>Delete a service.
+
+ docker service rm nginx
+
+------>Create a global service.
+
+docker service create --name nginx --mode global nginx
+
+------>Two different ways to scale a service:
+
+docker service update --replicas 3 nginx
+docker service scale nginx=4
+
+
+
+
+
+
+
+
