@@ -1,0 +1,88 @@
+Docker Networking
+
+
+
+Docker uses a architecture called the 
+Container Networking Model (CNM)
+to manage networking for ocker container.
+
+
+*************************Bridge Network****************************
+
+
+Single Host
+ ------------------------       ------------------------
+|Network Sandbox		 |		|	Network Sandbox		 |
+|						 |		|						 |
+| 						 |		|						 |
+| |					|	 |		|  |    			|	 |
+| | Container		|	 |		|  |  Conitaner		|	 |
+| |					|	 |		|  |				|	 |
+|						 |		|						 |
+|						 |		|						 |
+|			Endpoint	 |		|				Endpoint |
+------------------------       	------------------------
+					|				|
+					|				|	
+			-------------------------
+			|						 |
+			|			Network		 |
+			|						 |
+			|						 |
+ 			--------------------------
+
+	 					Docker engine
+
+		Docker network driver			IPAM Driver
+
+
+
+
+
+*************************Bridge Network****************************
+
+
+################################# #################################	#
+#	Swarm Host 1			# #				Swarm Host 2			#
+# ------------------------  # #  ------------------------			#
+# |Network Sandbox		 |	# #	|	Network Sandbox		 |			#
+# |						 |	# #	|						 |			#
+# |						 |	# #	|						 |			#
+# | |				|	 |	# #	|  |    			|	 |			#
+# | | Container		|	 |	# #	|  |  Conitaner		|	 |			#
+# | |				|	 |	# #	|  |				|	 |			#
+# |						 |	# #	|						 |			#
+# |						 |	# #	|						 |			#
+# |			Endpoint	 |	# #	|				Endpoint |			#
+# ------------------------  # #  ------------------------			#
+#					|		# #		 |								#
+#					|		# #		 |								#
+#					---Overlay-Network---							#
+#							# #		 								#
+#							# #		 								#
+####################################################################	 
+					Docker engine
+
+		Docker network driver			IPAM Driver
+
+
+
+----Sandbox: 
+		An isolated unit Containing all networking components associated with single container.
+----Endpoint:
+		-Connects a sendbox to anetwork
+		-Each sandbox/container can have any number of endpoint
+		but has exactly One endpoint for each network
+		-it is also connected.	
+----Network:
+		-Acollection of endpoint connected to one network.
+
+----Network Driver:
+		-Handles the actual implementation of the CNM concepts
+
+----IPAM Driver:
+		-IPAM means IP address Management.
+		-Automatically allocates subnet and ip address
+		for networkd and endpoints.
+
+

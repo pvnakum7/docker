@@ -1,0 +1,27 @@
+Deploying a Service on a Docker Overlay Network
+
+
+You can create a network with the overlay driver to provide
+connectivity between services and conitaines in Docker Swarm.
+
+By daufault, services are attanched to a default 
+overlay networrk called ingress.
+
+
+
+
+--->List the networks on the host. You should be able to see the default ingress overlay network.
+
+ docker network ls
+
+
+-->Create an attachable overlay network.
+
+ docker network create --driver overlay --attachable my-overlay
+
+
+--->Create a service that uses that network, then test the network by attaching a container to it and using the container to communicate with the service.
+
+ docker service create --name overlay-service --network my-overlay --replicas 3 nginx
+ 
+ docker run --rm --network my-overlay radial/busyboxplus:curl curl overlay-service:80

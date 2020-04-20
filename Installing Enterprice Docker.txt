@@ -1,0 +1,17 @@
+Installing Enterprice Docker
+
+
+
+--->Provision a server:
+ 	we can use this  server as a UCP manager later,
+ 	so provide at least 8 GB memory (size large in Cloud Playground).
+ 	We will be using the Ubuntu 18.0.4 Bionic Beaver LTS image.
+---> Set up the Docker Repository: Install some required package , add the GPG key, and the repo,
+and update the local package listings.
+
+--->Install Docker EE: Install the Docker EE package.
+
+
+
+
+

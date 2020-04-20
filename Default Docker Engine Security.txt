@@ -1,0 +1,24 @@
+Default Docker Engine Security
+
+
+----->Namespaces an control Groups (Cgroups)
+provide isolation to containers.
+
+----->Isolation means that container processes
+cannot see or effect other containers or rocesses
+runing directly on the host system.
+
+
+----->This limits the imapct of certain exploits
+or privilege escalation attacks.
+
+******************
+Only allow trusted users to access the deamon.
+******************************
+
+
+Docker uses capabilities to fines-tune what container
+propcesses can access.
+
+
+

@@ -36,18 +36,6 @@ Direct-lvm mode
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ************************************
 --->Stop and disable Docker.
 

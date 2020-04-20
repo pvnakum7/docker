@@ -1,0 +1,32 @@
+Configuring Docker to Use External DNS
+
+
+
+you may need to customize the external DNS server used by your containers.
+
+you can change the dafail
+
+
+
+
+
+----->Edit the Docker daemon config file to set a custom DNS for the host.
+
+  sudo vi /etc/docker/daemon.json
+
+ ----->file edit and add google dns:
+ {
+   "dns": ["8.8.8.8"]
+ }
+
+----->Restart Docker.
+
+ sudo systemctl restart docker
+
+----->Test your DNS by looking up an external domain.
+
+ docker run nicolaka/netshoot nslookup google.com
+ 
+----->Run a container with a custom DNS and test it by doing an nslookup.
+
+ docker run --dns 8.8.4.4 nicolaka/netshoot nslookup google.com

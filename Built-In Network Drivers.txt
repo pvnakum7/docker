@@ -1,0 +1,154 @@
+Built-In Network Drivers
+
+
+The Native Network Drivers are
+-Host
+-Bridge
+-Overlay
+-MACVAN
+-None
+
+with docker run, you can choose a network
+driver by using
+
+  --net=DRIVER
+
+
+1.###################HostNetwork and diagram###########################
+The host network Driver allow containers to 
+use the host's network stack directly.
+	
+
+Inside Host Network NameSpace
+
+		|			|	|			|
+		| Container |	|Contaoiner	|
+		| 			|	|			| 
+				|				|
+				eth0		etho0
+				|				|
+				----HOST eth0---
+
+---- container use the host'snetworking resorces directly
+----No sandbox, all container on the host using the 
+	host driver share the same network namespace.
+----no two container can use the same port(s).
+Use cases:- Simple and easy setup, one or only a few containers on a
+			single host
+***************
+Host Example :
+*************
+--->Create two containers and demonstrate communication between them using the host network driver. The ip add commands also demonstrate that the container is using the host's eth0 network interface directly.
+Commnad: 
+docker run -d --net host --name host_busybox radial/busyboxplus:curl sleep 3600
+
+docker run -d --net host --name host_nginx nginx
+
+ip add | grep eth0
+
+docker exec host_busybox ip add | grep eth0
+
+docker exec host_busybox curl localhost:80
+
+curl localhost:80
+
+
+
+
+2.############### Bridge Network Driver  and diagram ############
+
+Uses Linux bridge network to provide connectivity between
+container on the same host.
+--->this is the bridge driver for container runing a sinble host
+--->create Linux bridge for each Docker network
+--->Create a default linux bridge network called bridge0
+	Containers automatically connect to this 
+	if no other network is specified
+Usecases :-->Isolated networking among cotainer on single host.
+Diagram:
+
+
+		|			|	|			|
+		| Container |	|Contaoiner	|
+		| 			|	|			| 
+				|				|
+				eth0			eth0
+				|				|
+Container		|				|			Comntainer
+box1---->	   veth	  		  veth     <------box2				
+				|				|
+				|				|
+				|				|
+				-----Docker0-----
+						|
+						|
+						|
+						eth0
+
+Example:#######Bridge#####
+--->Create two containers and demonstrate that they can communicate using a custom bridge network. The ip link command can be used to explore the Linux bridge interfaces created by the bridge network driver.
+
+ip link
+ docker network create --driver bridge my-bridge-net
+ip link
+ docker run -d --name bridge_nginx --network my-bridge-net nginx
+
+ docker run --rm --name bridge_busybox --network my-bridge-net radial/busyboxplus:curl curl bridge_nginx:80
+
+
+
+
+***********************
+Overlay Network Driver
+***********************
+-->Overlay network driver provides connectivity between
+Containers across multiple Docker host. i.e with Docker Swarm
+-->Uses a 	VXLAN data plan which allows the underlying network
+	infrastructure (underlay) to route data between hosts
+	in a way that is transparent to the container themeselves.
+--> Automatically configures network interfaces, bridge, etc. 
+	on each host as needed.
+-->use cases: Networking between container in swarm.
+
+Diagram:
+
+			Host1			Host2
+		|			|	|			|
+		| Container |	|Contaoiner	|
+		| 			|	|			| 
+				|				|
+				eth0			eth0
+				|				|
+				|				|			
+				veth	  		veth     				
+				|				|
+				|				|
+				bridge	  		bridge 			     				
+				|				|
+				|				|
+				|				|
+box1---->		-----Docker0-----		<------box2
+		 				|			
+	  					|
+						|
+					Overlay Network
+
+
+######Example: Overlay
+--->Create two services in the Docker Swarm cluster and demonstrate that they are able to communicate using a custom overlay network.
+
+docker network create --driver overlay my-overlay-net
+
+docker service create --name overlay_nginx --network my-overlay-net nginx
+
+docker service create --name overlay_busybox --network my-overlay-net radial/busyboxplus:curl sh -c 'curl overlay_nginx:80 && sleep 3600'
+
+docker service logs overlay_busybox
+
+
+
+
+
+
+
+

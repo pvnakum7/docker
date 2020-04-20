@@ -1,0 +1,23 @@
+ Docker EnterPrice Edition
+
+ There Are Docker Editions:
+*******************************
+
+ 1. Docker Community Editions(CE):
+*************************************
+ Free and open -source Docker Engine
+ -All Docker Engine updates
+ -Docker Swarm
+ -Orchestration
+ -Networking
+ -Security
+-------------------------------------
+
+ 2. Docker Enterprice Editions(CE):
+*************************************
+Licensed Version (Not free)
+-All Features of CE
+-Universal Control Plane (UCP)
+-Docker Trusted Registry (DTR)
+-Vulnerability Scanning
+-Fedarated Application Management

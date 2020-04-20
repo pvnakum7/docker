@@ -1,0 +1,26 @@
+Docker MTLS
+
+(Mutually Authenticated Transport Layer Security)
+
+Encrypt communication betwwen container on overlay network in order to provide greater security within your swarm cluster.
+
+
+
+
+
+
+------>Create an encrypted overlay network:
+
+docker network create --opt encrypted --driver overlay my-encrypted-net
+
+
+------>Create two services on the encrypted overlay network and demonstrate that one service can communicate with the other:
+
+docker service create --name encrypted-overlay-nginx --network my-encrypted-net --replicas 3 nginx
+
+docker service create --name encrypted-overlay-busybox --network my-encrypted-net radial/busyboxplus:curl sh -c 'curl encrypted-overlay-nginx:80 && sleep 3600'
+
+
+------>Check the logs for the busybox service, and then verify that it shows the Nginx welcome page:
+
+docker service logs encrypted-overlay-busybox
