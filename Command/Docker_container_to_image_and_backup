@@ -1,0 +1,12 @@
+# Docker container to image and backup
+
+
+# Get container to Imagename
+--->  docker commit -m "add the name" ID ownimagename
+
+
+# For create image for backup
+---> docker save --output imagename.latest.tar current image name
+
+# For restore image use 
+---> docker load --input image_name.tar

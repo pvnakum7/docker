@@ -1,0 +1,28 @@
+CloudFormation and IAM
+
+
+Information in a statement is contained within a series:
+
+-version: Version of the policy language. Use the 
+			latest 2012-10-17
+
+-statement: Container for the following elemens. You 
+		can include more than one statemnet
+		 in a policy.
+-sid: Optinal ID to different between statement.
+-Effect: Allow or deny Access.
+-Principal: Indicate the account, user, role, or federated user to which you would like to allow or deny access.
+-Action: List of actions that the policy alllows or 
+		denies.
+-Resource:List resources ti which the actions apply.
+-Conditions(Optional): Specify the circumtances under 
+					which the policy grant permission.
+
+
+
+************************************
+CloudFormation
+
+Stack helpfull oinside the cloudformation.
+(A stack is a collection of AWS resources that you can manage as a single unit. 
+In other words, you can create, update, or delete a collection of resources by creating, updating, or deleting stacks.)

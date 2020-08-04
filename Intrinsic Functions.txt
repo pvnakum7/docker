@@ -1,0 +1,34 @@
+
+Intrinsic Functions and example
+
+-AWS CloudFormation provides several built-in functions that help you manage your stacks.
+
+- Use intrinsic functions in your templates to assign values to properties that are not available until runtime.
+
+-
+Intrinsic Function Examples
+
+
+JSON:
+
+"UserData": { "Fn::Base64": { "Fn::Join": ["\n", [
+  "#!/bin/bash -xe",
+  "yum update -y aws-cfn-bootstrap",
+  { "Fn::Sub": "/opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfig --configsets wordpress_install --region ${AWS::Region}" },
+  { "Fn::Sub": "/opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerGroup --region ${AWS::Region}" }]]
+}}
+
+
+YAML:
+
+UserData:
+  Fn::Base64:
+    !Sub |
+      #!/bin/bash -xe
+      yum update -y aws-cfn-bootstrap
+      /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfig --configsets wordpress_install --region ${AWS::Region}
+      /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerGroup --region ${AWS::Region}
+
+
+
+      

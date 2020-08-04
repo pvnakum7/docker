@@ -1,0 +1,11 @@
+Runing Container exit without stop container
+
+
+Run container in Backgroud(here d for backgrpoud):
+-->		docker run imagename -d
+
+
+-->use 	Shortcut:	" ctl-pq "
+    	
+
+'ctl' + '-' + 'p' + 'q'

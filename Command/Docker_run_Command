@@ -1,0 +1,68 @@
+Docker run Command:
+
+--->It combines both create and start into one command: run.
+Commnad:
+    docker container run -it my_image my_command
+    
+    docker container run -d my_image
+
+--->Notice that we combined -i and -t into -it.
+Docker image run Command: 
+
+docker container run -d my_image
+
+(-d is short for --detach. Run the container in the background)
+
+Checking Container Status:
+---->Command:
+docker container ls -a -s
+
+-a is short for -all. List all containers (not just running ones).
+-s is short for --size. List the size for each container.
+
+--->Stop a running container
+
+single stop:
+    docker container stop my_container
+
+Single kill:
+    docker container kill my_container
+
+All KIll container:
+    docker container kill $(docker ps -q)
+
+
+---->Delete Container
+single Container:
+    docker container rm my_container
+
+All container:
+    docker container rm $(docker ps -a -q)
+
+
+---->Docker Create Image from Code
+Note:(First Need Dockerfile for create Image
+and last dot (.) require because its path of save images)
+
+
+	docker build -f Dockerfile-stage  --tag clickit .
+
+
+
+----->Get List of container which Status is Exited:
+	docker ps -a -f status=exited
+
+----->Remove Container which Status is Exited:
+
+	docker rm $(docker ps -a -f status=exited -q)
+
+docker rm $(docker ps -a -f status=exited -q)
+docker ps -a -f status=exited
+
+
+
+
+
+
+
+

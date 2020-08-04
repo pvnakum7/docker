@@ -1,0 +1,8 @@
+Docker daemon or ghost stop incontainer
+
+Important Commnad:
+
+command:
+
+docker stack rm $(docker stack ls --format '{{.Name}}')
+

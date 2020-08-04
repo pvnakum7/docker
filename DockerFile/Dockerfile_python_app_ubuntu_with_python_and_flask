@@ -1,0 +1,9 @@
+FROM UBUNTU
+
+RUN apt-get update
+RUN apt-get install -y python python-pip
+RUN apt-get install flask
+
+COPY app.py /opt/app.py
+
+ENTRYPOINT FLASK_APP=/opt/app.py flash run --host:0.0.0.0

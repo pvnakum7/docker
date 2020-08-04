@@ -1,0 +1,5 @@
+
+Show images with a given label
+
+
+-->     docker images --filter "label=com.example.version"

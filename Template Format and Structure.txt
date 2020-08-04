@@ -1,0 +1,42 @@
+Template Format and Structure
+
+-A CloudFormation Template is a declaration of the AWS
+resources that make up a stack.
+-Resource are declared in template
+-Resources are declared in the template
+-Resouce map to a stack
+-Declare an object. as same name-value pair or 
+	a pairing of name with a set of object enclosed.
+- The resource object is the only required object in a template.
+-The resorce declaration
+	-JSON
+	-YAML
+-Template Sections:
+	-TemplateFormatVertion
+	-Description
+	-Metadata
+	-Parameters
+	-Mapping
+	-Conditions
+	-Tranforms
+	-Resource
+	-Output
+
+-Metadata
+	
+
+
+
+-ParasMeters
+    You can have a maximum of 60 parameters in an AWS CloudFormation template.
+
+    Each parameter must be given a logical name (also called logical ID), which must be alphanumeric and unique among all logical names within the template.
+
+    Each parameter must be assigned a parameter type that is supported by AWS CloudFormation. For more information, see Type.
+
+    Each parameter must be assigned a value at runtime for AWS CloudFormation to successfully provision the stack. You can optionally specify a default value for AWS CloudFormation to use unless another value is provided.
+
+    Parameters must be declared and referenced from within the same template. You can reference parameters from the Resources and Outputs sections of the template.
+
+
+

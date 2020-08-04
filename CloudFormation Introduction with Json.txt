@@ -1,0 +1,53 @@
+
+
+
+
+
+JSON and YAML are used for CloudFormation templates and JSON is very present in AWS, particularly in IAM Policies.
+
+
+Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as .html, .css, .js, and image files, to your users. 
+
+
+
+CloudFormation								Cloudfront
+******************************			******************************
+(-Simple language, Path Provider 		(-Delivery Man for deliver item or content)	
+for delivery man)
+
+-->AWS CloudFormation gives  		 -->CloudFront can speed up the delivery of		
+developers and system administrators	your static content (for example, images, style	
+to create and manage a collection of 		sheets, JavaScript, and so on)			
+an easy way related AWS resources,		to viewers across the globe		
+ provisioning and updating  								
+them in an orderly and predictable
+fashion.									
+
+
+
+
+JSON- JavaScript Object Notificaton
+	-use for lightweight data interchange format
+	-used throught AWS(Cli, IAM Policies)
+	-Based on Javascript, also resemblies Java,and C#
+	-Pros: Resembles popular language and used elsewhere in AWS.
+	-Cons: NO INLINE Comments!
+
+
+YAML - Is a data serialization language designed 
+		to be readableby humans.
+		-YAML is a superset of Json. This means you can parse 
+		JSON with a YAML Parser.
+		-YAML Ain't Markup Language - Designed for data.
+		-Do not Use tabs! use Spaces.
+		-Whitespaces and lines have meaning in YAML. they are delimiters.
+		-Pros: Much more compact than JSON,and can use inline comments.
+		ansible playbooks, Docker compose, and Kubernates use YAML.
+		Support for complax datatypes.
+		-Cons: Not many. It may appeal to the Javascript crowd.
+
+
+
+		
+ 
+

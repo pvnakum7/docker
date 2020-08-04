@@ -1,0 +1,8 @@
+
+##for create image for backup
+
+docker save --output imagename.latest.tar current image name
+
+
+####for restore image use 
+docker load --input image_name.tar

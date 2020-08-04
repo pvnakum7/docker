@@ -1,0 +1,11 @@
+
+
+
+
+configure docker to start on boot
+
+---> sudo systemctl enable docker
+
+
+--*****go inside Runing Docker Container:
+----> docker exec -it <Docker_containerid-or-name> bash
