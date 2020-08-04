@@ -24,3 +24,17 @@ sudo systemctl enable docker
 #Docker Vertion Check
 docker --version
 
+
+
+#Setup Docker Group and Permissions
+#https://docs.docker.com/engine/install/linux-postinstall/
+
+sudo groupadd docker
+
+sudo usermod -aG docker $USER
+
+
+#check docker group command:
+
+groups
+
